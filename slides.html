@@ -1,0 +1,954 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<title>Scaling Software Builds with Jenkins</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=1274, user-scalable=no">
+	<link rel="stylesheet" href="themes/ribbon/styles/style.css">
+	<link rel="stylesheet" href="themes/ribbon/styles/print.css" media="print">
+	<!--
+		To apply styles to the certain slides
+		use slide ID to get needed elements
+		-->
+	<style>
+		#Cover h2 { color:#FFF; text-align:left; font-size:60px; }
+		#FitToWidth h2,
+		#FitToHeight h2 {
+			color:#FFF;
+			text-align:center;
+			}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Scaling Software Builds with Jenkins</h1>
+		<p>Andrey Adamovich, Aestas/IT</p>
+	</header>
+	<div class="slide cover" id="devconfu"><div><section><img src="images/DEVCONFU.png" /></section></div></div><div class="slide cover" id="Cover"><div>
+		<section>
+			<header>
+				<h2>Scaling Software Builds with Jenkins</h2>
+			</header><img src="images/COVER.png" />
+		</section>
+	</div></div>	
+	
+    
+    
+       
+    <div class="slide" id="1"><div>
+        <section>
+			<header>
+				<h2>About me</h2>
+			</header>    
+            <ul> 
+ <li>Name: Andrey Adamovich</li> 
+ <li>Bio: Developer, coach, speaker, author</li> 
+ <li>Company: Aestas/IT</li> 
+ <li>E-mail: <a href="mailto:andrey@aestasit.com">andrey@aestasit.com</a></li> 
+ <li>Linkedin: <a href="http://www.linkedin.com/in/andreyadamovich">http://www.linkedin.com/in/andreyadamovich</a></li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="2"><div>
+        <section>
+			<header>
+				<h2>Software development process</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/010_BUILD_PROCESS.png" alt="Build Setup" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="3"><div>
+        <section>
+			<header>
+				<h2>Why scale?</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="4"><div>
+        <section>
+			<header>
+				<h2>Feedback loop</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/020_FEEDBACK_LOOP.png" alt="Feedback loop" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="5"><div>
+        <section>
+			<header>
+				<h2>Reason 1</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="6"><div>
+        <section>
+			<header>
+				<h2>Monolithic build</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="7"><div>
+        <section>
+			<header>
+				<h2>Monolithic build</h2>
+			</header>    
+            <ul> 
+ <li>Time-consuming</li> 
+ <li>Resource-consuming</li> 
+ <li>Frustration-accumulating</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="8"><div>
+        <section>
+			<header>
+				<h2>Before you can scale...</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="9"><div>
+        <section>
+			<header>
+				<h2>SPLIT!!!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="10"><div>
+        <section>
+			<header>
+				<h2>Reason 2</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="11"><div>
+        <section>
+			<header>
+				<h2>Too many things to build</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="12"><div>
+        <section>
+			<header>
+				<h2>Too many things to build</h2>
+			</header>    
+            <ul> 
+ <li>Too many components</li> 
+ <li>Too many branches</li> 
+ <li>Too many unit/integration tests</li> 
+ <li>Too many validation rules</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="13"><div>
+        <section>
+			<header>
+				<h2>Reason 3</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="14"><div>
+        <section>
+			<header>
+				<h2>Too many things to test</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="15"><div>
+        <section>
+			<header>
+				<h2>Too many test variations</h2>
+			</header>    
+            <ul> 
+ <li>Different operating systems</li> 
+ <li>Different target platforms</li> 
+ <li>Different markets</li> 
+ <li>Different customers</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="16"><div>
+        <section>
+			<header>
+				<h2>Reason 4</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="17"><div>
+        <section>
+			<header>
+				<h2>Lack of resources</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="18"><div>
+        <section>
+			<header>
+				<h2>Reason 5</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="19"><div>
+        <section>
+			<header>
+				<h2>Lack of time!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="20"><div>
+        <section>
+			<header>
+				<h2>Solutions?</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="21"><div>
+        <section>
+			<header>
+				<h2>Add more hardware!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="22"><div>
+        <section>
+			<header>
+				<h2>or...</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="23"><div>
+        <section>
+			<header>
+				<h2>Go to the Cloud!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="24"><div>
+        <section>
+			<header>
+				<h2>Who is Jenkins?</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/LOGO_JENKINS.png" alt="Jenkins Logo" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="25"><div>
+        <section>
+			<header>
+				<h2>Architecture</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/020_JENKINS_ARCHITECTURE.png" alt="Jenkins Architecture" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="26"><div>
+        <section>
+			<header>
+				<h2>UI</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/020_JENKINS_UI.png" alt="Jenkins &lt;abbr title=&quot;User Interface&quot;&gt;UI&lt;/abbr&gt;" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="27"><div>
+        <section>
+			<header>
+				<h2>Master/Slave</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/020_JENKINS_MASTER_SLAVE.png" alt="Jenkins Master/Slave" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="28"><div>
+        <section>
+			<header>
+				<h2>Labelling</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_JENKINS_LABELLING.png" alt="Jenkins Master/Slave" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="29"><div>
+        <section>
+			<header>
+				<h2>Slaves vs. Executors</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="30"><div>
+        <section>
+			<header>
+				<h2>Executor contention</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_EXECUTOR_CONTENTION.png" alt="Jenkins Queue" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="31"><div>
+        <section>
+			<header>
+				<h2>Other types of contention</h2>
+			</header>    
+            <ul> 
+ <li>CPU contention</li> 
+ <li>I/O contention</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="32"><div>
+        <section>
+			<header>
+				<h2>Cloud slaves</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_SLAVES_IN_THE_CLOUD.png" alt="Cloud Slaves" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="33"><div>
+        <section>
+			<header>
+				<h2>Executor scaling</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_EXECUTOR_SCALING.png" alt="Executor Scaling" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="34"><div>
+        <section>
+			<header>
+				<h2>Amazon Web Services</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_AWS.png" alt="AWS" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="35"><div>
+        <section>
+			<header>
+				<h2>Elastic Compute Cloud</h2>
+			</header>    
+            <ul> 
+ <li>instances</li> 
+ <li>storage</li> 
+ <li>images</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="36"><div>
+        <section>
+			<header>
+				<h2>EC2 Console</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_EC2_CONSOLE.png" alt="EC2" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="37"><div>
+        <section>
+			<header>
+				<h2>ALERT!!!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="38"><div>
+        <section>
+			<header>
+				<h2>It's not free!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="39"><div>
+        <section>
+			<header>
+				<h2>But...</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="40"><div>
+        <section>
+			<header>
+				<h2>There is a Free Tier!</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="41"><div>
+        <section>
+			<header>
+				<h2>Cost calculations</h2>
+			</header>    
+            <table> 
+ <tbody>
+  <tr>
+   <th>Name</th>
+   <th>Compute Units</th>
+   <th>Memory</th>
+   <th>Hourly Cost</th>
+  </tr> 
+  <tr>
+   <td>t1.micro</td>
+   <td>2</td>
+   <td>0.60 GB</td>
+   <td>$0.02</td>
+  </tr> 
+  <tr>
+   <td>m1.small</td>
+   <td>1</td>
+   <td>1.70 GB</td>
+   <td>$0.06</td>
+  </tr> 
+  <tr>
+   <td>c1.medium</td>
+   <td>5</td>
+   <td>1.70 GB</td>
+   <td>$0.14</td>
+  </tr> 
+  <tr>
+   <td>m1.medium</td>
+   <td>2</td>
+   <td>3.75 GB</td>
+   <td>$0.12</td>
+  </tr> 
+  <tr>
+   <td>m1.large</td>
+   <td>4</td>
+   <td>7.50 GB</td>
+   <td>$0.24</td>
+  </tr> 
+  <tr>
+   <td>c1.xlarge</td>
+   <td>20</td>
+   <td>7.00 GB</td>
+   <td>$0.58</td>
+  </tr> 
+  <tr>
+   <td>m3.xlarge</td>
+   <td>13</td>
+   <td>15.00 GB</td>
+   <td>$0.50</td>
+  </tr> 
+ </tbody>
+</table>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="42"><div>
+        <section>
+			<header>
+				<h2>Labor cost</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_LABOUR_COST.png" alt="Labor cost" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="43"><div>
+        <section>
+			<header>
+				<h2>Public access</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="44"><div>
+        <section>
+			<header>
+				<h2>Public Clouds</h2>
+			</header>    
+            <ul> 
+ <li>VMWare vCloud</li> 
+ <li>Ubuntu Enterprise Cloud</li> 
+ <li>Microsoft Azur</li> 
+ <li>Google Cloud</li> 
+ <li>Digital Ocean</li> 
+ <li><strong>Cloudbees Cloud</strong></li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="45"><div>
+        <section>
+			<header>
+				<h2>Private Clouds</h2>
+			</header>    
+            <ul> 
+ <li>OpenStack</li> 
+ <li>VMWare vSphere</li> 
+ <li>Amazon VPC</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="46"><div>
+        <section>
+			<header>
+				<h2>Jenkins plugins</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/020_JENKINS_PLUGINS.png" alt="Jenkins Plugins" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="47"><div>
+        <section>
+			<header>
+				<h2>Jenkins EC2 plugin</h2>
+			</header>    
+            <blockquote>
+ <p>Allow Jenkins to start slaves on EC2 or Ubuntu Enterprise Cloud (Eucalyptus) on demand, and kill them as they get unused. With this plugin, if Jenkins notices that your build cluster is overloaded, it'll start instances using the EC2 <abbr title="Application Programming Interface">API</abbr> and automatically connect them as Jenkins slaves. </p> 
+</blockquote>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="48"><div>
+        <section>
+			<header>
+				<h2>Preparation</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="49"><div>
+        <section>
+			<header>
+				<h2>1. Configure access/secret key</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_AWS_ACCESS_KEY.png" alt="AWS Access" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="50"><div>
+        <section>
+			<header>
+				<h2>2. Configure key pair</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_AWS_KEY_PAIR.png" alt="AWS Access" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="51"><div>
+        <section>
+			<header>
+				<h2>3. Configure security group</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_AWS_DEFAULT_SECURITY.png" alt="AWS Access" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="52"><div>
+        <section>
+			<header>
+				<h2>4. Select machine image</h2>
+			</header>    
+            <ul> 
+ <li>Amazon base images</li> 
+ <li>AWS market place</li> 
+ <li>Create your own</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="53"><div>
+        <section>
+			<header>
+				<h2>5.1. Configure EC2 plugin</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_JENKINS_ADD_NEW_CLOUD.png" alt="Jenkins Add Cloud" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="54"><div>
+        <section>
+			<header>
+				<h2>5.2. Configure EC2 plugin</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_JENKINS_EC2_SETTINGS.png" alt="Jenkins EC2 AMI" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="55"><div>
+        <section>
+			<header>
+				<h2>5.3. Configure EC2 plugin</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/040_JENKINS_EC2_AMI.png" alt="Jenkins EC2 AMI" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="56"><div>
+        <section>
+			<header>
+				<h2>Demo</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="57"><div>
+        <section>
+			<header>
+				<h2>Cloudbees</h2>
+			</header>    
+            <ul> 
+ <li>Company behind Jenkins</li> 
+ <li>Kohsuke Kawaguchi (author of Hudson/Jenkins) works there</li> 
+ <li>Jenkins Enterprise Edition</li> 
+ <li>Jenkins Cloud = <a href="mailto:DEV@Cloud">DEV@Cloud</a></li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="58"><div>
+        <section>
+			<header>
+				<h2>DEV@Cloud</h2>
+			</header>    
+            <ul> 
+ <li><abbr title="Application Programming Interface">API</abbr> &amp; SDK</li> 
+ <li>Pricing based on size (# masters/executors/slaves)</li> 
+ <li>Slave OS variety (soon will also include iOS)</li> 
+ <li>Manual or auto-scaling</li> 
+ <li>Minute-based pricing</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="59"><div>
+        <section>
+			<header>
+				<h2>Free-tier</h2>
+			</header>    
+            <ul> 
+ <li>300 free build minutes a month</li> 
+ <li>1 build executor</li> 
+ <li>FOSS programme for open-source projects</li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="60"><div>
+        <section>
+			<header>
+				<h2>Services Partner</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/070_CLOUDBEES_PARTNERS.png" alt="Service Partners" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide shout" id="61"><div>
+        <section>
+			<header>
+				<h2>Questions?</h2>
+			</header>    
+            
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="62"><div>
+        <section>
+			<header>
+				<h2>GitHub projects</h2>
+			</header>    
+            <p>Jenkins setup:<br /><a href="https://github.com/aestasit/talks2013-devconfu-scaling-builds-setup">https://github.com/aestasit/talks2013-devconfu-scaling-builds-setup</a></p>
+<p>Slides:<br /><a href="https://github.com/aestasit/talks2013-devconfu-scaling-builds-slides">https://github.com/aestasit/talks2013-devconfu-scaling-builds-slides</a></p>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="63"><div>
+        <section>
+			<header>
+				<h2>Scaling Software Builds with Jenkins</h2>
+			</header>    
+            <ul> 
+ <li>Author: Andrey Adamovich</li> 
+ <li>Company: Aestas/IT</li> 
+ <li>E-mail: <a href="mailto:andrey@aestasit.com">andrey@aestasit.com</a></li> 
+ <li>Linkedin: <a href="http://www.linkedin.com/in/andreyadamovich">http://www.linkedin.com/in/andreyadamovich</a></li> 
+</ul>
+		</section>
+	</div></div>
+    
+    
+       
+    <div class="slide" id="64"><div>
+        <section>
+			<header>
+				<h2>Feedback</h2>
+			</header>    
+            
+<figure> 
+ <img src="images/990_FEEDBACK.png" alt="Feedback" /> 
+</figure>
+
+		</section>
+	</div></div>
+    
+		
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="slide cover" id="devconfu"><div><section><img src="images/DEVCONFU.png" /></section></div></div><div class="progress"><div></div></div>
+	<script src="scripts/script.js"></script>
+	<!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+	<!-- Photos by John Carey — fiftyfootshadows.net -->
+</body>
+</html>
